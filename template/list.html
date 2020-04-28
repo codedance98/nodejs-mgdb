@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>find all</title>
+    <style>
+
+      table{
+        border-collapse:collapse;
+        border:1px solid #666'
+      }
+    </style>
+</head>
+<body>
+    <button>新增</button>
+    <table border=1></table>
+    <p class='total'>总数:0</p>
+</body>
+<script>
+  document.querySelector('button').onclick = function(e){
+    window.location.href = '/add';
+  }
+  window.onload = function(){
+    getData();
+  };
+  function getData(){
+    fetch('http://127.0.0.1:8081/v1/findAll',{method: 'GET'}).then(function(response) {
+      console.log(response)
+      return response.json();
+    })
+    .then(function(response) {
+      console.log(response);
+      let dom = document.querySelector('table');
+      dom.innerHTML += `<tr>
+        <td>ID</td>
+        <td>名字</td>
+        <td>年龄</td>
+        <td>性别</td>
+        <td>邮箱</td>
+        <td>介绍</td>
+      </tr>`
+      document.querySelector('.total').innerHTML = `总数:${response.length}`  
+      response.forEach((item)=>{
+        document.querySelector('table').innerHTML += `
+        <tr>
+          <td>${item._id}</td>
+          <td>${item.name}</td>
+          <td>${item.age}</td>
+          <td>${item.sex}</td>
+          <td>${item.email}</td>
+          <td>${item.instructions}</td>
+        </tr>` 
+      })
+      
+    });
+  }
+  
+</script>
+
+</html>

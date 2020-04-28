@@ -19,7 +19,15 @@ const server = app.listen(8081, ()=>{
 })
 
 app.get('/',(req, res) => {
-    res.sendfile(`${__dirname}/index.html`);
+    res.sendfile(`${__dirname}/template/list.html`);
+    res.setHeader('Content-Type', 'text/html');
+})
+app.get('/list',(req, res) => {
+    res.sendfile(`${__dirname}/template/list.html`);
+    res.setHeader('Content-Type', 'text/html');
+})
+app.get('/add',(req, res) => {
+    res.sendfile(`${__dirname}/template/add.html`);
     res.setHeader('Content-Type', 'text/html');
 })
 

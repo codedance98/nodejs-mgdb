@@ -30,6 +30,10 @@ app.get('/add',(req, res) => {
     res.sendfile(`${__dirname}/template/add.html`);
     res.setHeader('Content-Type', 'text/html');
 })
+app.get('/edit',(req, res) => {
+    res.sendfile(`${__dirname}/template/edit.html`);
+    res.setHeader('Content-Type', 'text/html');
+})
 
 app.use(function(req, res) {
     res.status(404).send({url: req.originalUrl + ' not found'})

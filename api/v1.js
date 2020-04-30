@@ -35,8 +35,8 @@ api.post("/create", function(req, res) {
 
 api.get("/findAll", function(req, res) {
     UserModel.find(function(err, ret){
-        console.log(err)
-        console.log(ret)
+        // console.log(err)
+        // console.log(ret)
         if(err){
            console.log('查询失败')
         } else {
@@ -44,5 +44,25 @@ api.get("/findAll", function(req, res) {
             res.json(ret);
         }
     })
+});
+api.delete("/delete", async function(req, res) {
+    // let wherestr = {'_id' : req.id};
+    await UserModel.findByIdAndDelete(req.body.id, req.body)
+    res.json({
+        msg:'删除成功'
+    });
+    // res.json({
+    //     msg:'删除成功'
+    // });
+    // UserModel.remove(wherestr, function(err, res){
+        // if (err) {
+        //     console.log("Error:" + err);
+        // }
+        // else {
+        //     res.json({
+        //         msg:'删除成功'
+        //     });
+        // }
+    // })
 });
 module.exports = api;

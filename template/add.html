@@ -4,41 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>find all</title>
+    <title>node demo</title>
 </head>
 <body>
-    <form action="http://127.0.0.1:8081/v1/create" method="POST">
-        name:<input type="text" name="name">
-        <br>
-        <br>
-        <br>
-        age:<input type="number" name="password">
-        <br>
-        <br>
-        <br>
-        sex:<input type="text" name="sex">
-        <br>
-        <br>
-        <br>
-        email:<input type="email" name="email">
-        <br>
-        <br>
-        <br>
-        instructions:<input type="text" name="instructions">
-        <br>
-        <br>
-        <br>
-        <input type="submit" value="submit">
-    </form>
+  name:<input type="text" name="name">
+  <br>
+  <br>
+  <br>
+  age:<input type="number" name="age">
+  <br>
+  <br>
+  <br>
+  sex:<input type="text" name="sex">
+  <br>
+  <br>
+  <br>
+  email:<input type="email" name="email">
+  <br>
+  <br>
+  <br>
+  instructions:<input type="text" name="instructions">
+  <br>
+  <br>
+  <br>
+  <input type="submit" value="submit" class='submitButton'>
 </body>
-<!-- <script>
-    fetch('/find')
-  .then(function(response) {
-    console.log(response)
-    return response.json();
-  })
-  .then(function(myJson) {
-    console.log(myJson);
-  });
-</script> -->
+<script>
+  document.querySelector('.submitButton').onclick = function(e){
+    console.log(document.querySelector('input[name=name]').value)
+    fetch('v1/create',{
+      method:'post',
+      mode: 'cors',
+      headers: {
+  　　　　'Content-Type': 'application/json'
+  　　},
+      body:JSON.stringify({
+        name:document.querySelector('input[name=name]').value,
+        age:document.querySelector('input[name=age]').value,
+        sex:document.querySelector('input[name=sex]').value,
+        email:document.querySelector('input[name=email]').value,
+        instructions:document.querySelector('input[name=instructions]').value,
+      })
+    }).then((response)=>{
+      if (response.ok) {
+        return response.json()
+      } else {
+        return Promise.reject('something went wrong!')
+        alert(`something went wrong!`);
+      }
+    }).then((response)=>{
+        alert(`保存成功`);
+        window.history.go(-1);
+        console.log(response)
+    })
+  }
+</script>
 </html>

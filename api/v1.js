@@ -1,7 +1,7 @@
 const express = require("express");
 const db = require('mongoose');
 let api = express.Router();
-const UserModel = require("../db/model/user.js");
+const UserModel = require("../db/models/user.js");
 const db_add = 'mongodb+srv://codedance98:liliangqi1@cluster0-cjz8o.mongodb.net/test?retryWrites=true&w=majority';
 db.connect(db_add);
 

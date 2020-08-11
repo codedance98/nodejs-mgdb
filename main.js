@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
 const fs = require('fs');
+const cors = require('cors')
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const cors = require('cors')
+
 const apiV1 = require('./api/v1.js');
 
 app.use(bodyParser.json());

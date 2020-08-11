@@ -11,6 +11,6 @@ db.connection.on('error', (err)=>{
 db.connection.on('diconnected', ()=>{
     console.log('连接数据库断开');
 })
-const UserModel = require("./model/user.js");
+const UserModel = require("./models/user.js");
 
 module.exports = db; 

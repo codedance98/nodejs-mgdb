@@ -5,5 +5,5 @@ const schema = new mongoose.Schema({
     sex: String,
     email: String,
     instructions: String,
-});  
+});   
 module.exports = mongoose.model('Article', schema);
